@@ -14,7 +14,7 @@ npm install
 
 ```bash
 # using custom jiti `jiti-run.cjs`
-npm run jiti order
+npm run jiti ./src/index.ts order
 ```
 
 ### tsx
