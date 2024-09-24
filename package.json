@@ -1,7 +1,8 @@
 {
   "name": "cafe",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "A simple CLI for ordering menu",
   "type": "module",
   "scripts": {
     "build": "unbuild",
@@ -28,6 +29,7 @@
   },
   "dependencies": {
     "citty": "^0.1.6",
-    "consola": "^3.2.3"
+    "consola": "^3.2.3",
+    "pkg-types": "^1.2.0"
   }
 }
