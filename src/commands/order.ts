@@ -1,40 +1,8 @@
 import { defineCommand } from "citty";
 import consola from "consola";
 
-type MenuItem = {
-  name: string;
-  price: {
-    R: number;
-    L: number;
-  };
-};
-
-const menu: MenuItem[] = [
-  {
-    name: "Cafe latte",
-    price: {
-      R: 220,
-      L: 270,
-    },
-  },
-  {
-    name: "Hangover tea",
-    price: {
-      R: 240,
-      L: 340,
-    },
-  },
-  {
-    name: "Caramel milk",
-    price: {
-      R: 280,
-      L: 360,
-    },
-  },
-];
-
-const menuOptions = menu.map((item) => item.name);
-const sizeOptions = ["R", "L"];
+import { menu, menuOptions, sizeOptions } from "@/constants";
+import { MenuNames, MenuSize } from "@/types";
 
 export const orderCommand = defineCommand({
   meta: {
@@ -52,7 +20,7 @@ export const orderCommand = defineCommand({
     },
   },
   async run(ctx) {
-    const targetArg = ctx.args.target;
+    const targetArg = ctx.args.target as MenuNames;
     const selectedTarget = menuOptions.includes(targetArg)
       ? targetArg
       : await consola.prompt("Which menu item to order?", {
@@ -60,15 +28,17 @@ export const orderCommand = defineCommand({
           options: menuOptions,
         });
 
-    const sizeArg = ctx.args.size as "R" | "L";
+    const sizeArg = ctx.args.size as MenuSize;
     const selectedSize = sizeOptions.includes(sizeArg)
       ? sizeArg
-      : ((await consola.prompt("Which size to order?", {
+      : await consola.prompt("Which size to order?", {
           type: "select",
           options: sizeOptions,
-        })) as "R" | "L");
+        });
 
-    const selectedMenuItem = menu.find((item) => item.name === selectedTarget);
+    const selectedMenuItem = menu.find((item) => {
+      return item.name === selectedTarget;
+    });
 
     if (!selectedMenuItem) {
       return consola.error("Menu item not found.");
