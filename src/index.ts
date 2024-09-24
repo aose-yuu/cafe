@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { defineCommand, runMain } from "citty";
-import { orderCommand } from "./commands/order";
+import { orderCommand } from "@/commands/order";
 
 const main = defineCommand({
   meta: {

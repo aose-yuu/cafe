@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build": "unbuild"
+    "build": "unbuild",
+    "jiti": "node jiti-run.cjs"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
@@ -20,6 +21,8 @@
     "cafe": "./dist/index.cjs"
   },
   "devDependencies": {
+    "@types/node": "^22.6.1",
+    "jiti": "^1.21.6",
     "typescript": "^5.5.3",
     "unbuild": "^2.0.0"
   },
