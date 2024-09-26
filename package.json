@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "unbuild",
-    "jiti": "node jiti-run.cjs"
+    "jiti": "node custom-jiti.cjs"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
